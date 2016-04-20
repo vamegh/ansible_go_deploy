@@ -1,0 +1,13 @@
+---
+
+# file: playbook.yaml
+
+- hosts: lb
+  roles:
+    - common
+    - lb
+
+- hosts: app
+  roles:
+    - common
+    - app

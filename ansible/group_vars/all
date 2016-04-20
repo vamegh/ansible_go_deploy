@@ -1,0 +1,26 @@
+---
+# file: group_vars/all environments
+zone: all
+zones:
+  all:
+    dns:
+      resolver:
+        - '4.2.2.1'
+        - '8.8.8.8'
+      domain: 'ev9.io'
+      search: 'ev9.io'
+
+epel_repo: "http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-6.noarch.rpm"
+
+app: all
+apps:
+  all:
+    appservers:
+      servers:
+        - '192.168.100.101'
+        - '192.168.100.102'
+      app_port: '8484'
+
+
+
+

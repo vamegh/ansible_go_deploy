@@ -1,0 +1,25 @@
+---
+
+# file: roles/lb/tasks/main.yaml
+
+- name: install nginx
+  sudo: true
+  yum: name=nginx state=present
+
+- name: configure nginx
+  sudo: true
+  template: src=nginx_conf.j2 dest=/etc/nginx/nginx.conf
+  with_dict: apps[app]
+
+- name: start nginx
+  sudo: true
+  service:
+    name: nginx
+    state: started
+
+- name: open firewall port 80
+  sudo: true
+  command: "{{item}}"
+  with_items:
+    - firewall-cmd --permanent --zone=public --add-port=80/tcp
+    - firewall-cmd --reload

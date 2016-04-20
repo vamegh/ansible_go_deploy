@@ -1,0 +1,45 @@
+---
+
+# Define the hosts we want to build (options are pretty self explanitory but enumerated below)
+#   name         = vagrant name of host
+#   hostname     = hostname that is assigned to the running vm
+#   ip           = the network address of the given node
+#   memory       = how much ram to assign the node
+#   cpu          = how many cpu's to assign to the node
+#   box          = what basebox to use to build the vm
+#   port_forward = an array of maps that enumerate all required port bindings from guest to host
+
+- :name: 'app1'
+  :hostname: 'app1.ev9.io'
+  :ip: '192.168.100.101'
+  :netmask: '255.255.255.0'
+  :memory: "512"
+  :cpu: "1"
+  :box: 'puppetlabs/centos-7.0-64-nocm'
+  :plat: 'virtualbox'
+  :port_forward:
+  - :guest: "8484"
+    :host: "8001"
+- :name: 'app2'
+  :hostname: 'app2.ev9.io'
+  :ip: '192.168.100.102'
+  :netmask: '255.255.255.0'
+  :memory: "512"
+  :cpu: "1"
+  :box: 'puppetlabs/centos-7.0-64-nocm'
+  :plat: 'virtualbox'
+  :port_forward:
+  - :guest: "8484"
+    :host: "8002"
+- :name: 'lb1'
+  :hostname: 'lb1.ev9.io'
+  :ip: '192.168.100.10'
+  :netmask: '255.255.255.0'
+  :memory: "256"
+  :cpu: "1"
+  :box: 'puppetlabs/centos-7.0-64-nocm'
+  :plat: 'virtualbox'
+  :port_forward:
+  - :guest: "80"
+    :host: "8080"
+

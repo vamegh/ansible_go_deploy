@@ -1,0 +1,12 @@
+[Unit]
+Description=Simple Go App
+After=syslog.target network.target
+
+[Service]
+PIDFile=/var/run/app/app.pid
+EnvironmentFile=-/etc/sysconfig/app
+ExecStart=/opt/app/app
+
+[Install]
+WantedBy=multi-user.target
+

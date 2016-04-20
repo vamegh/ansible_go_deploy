@@ -1,0 +1,6 @@
+domain {{ item.value.domain }}
+search {{ item.value.search }}
+{% for name in item.value.resolver %}
+nameserver {{ name }}
+{% endfor %}
+
