@@ -28,10 +28,6 @@ Vagrant.configure("2") do |config|
       c.vm.network :private_network, ip: host[:ip], netmask: host[:netmask]
       ## Workaround for ansible && vagrant bug described here: https://github.com/mitchellh/vagrant/issues/6793
       c.vm.provision :shell, :path => "scripts/provision.sh"
-      #c.vm.provision "shell" do |s|
-      #  s.inline = '[[ ! -f $1 ]] || grep -F -q "$2" $1 || sed -i "/__main__/a \\    $2" $1'
-      #  s.args = ['/bin/ansible-galaxy', "if sys.argv == ['/bin/ansible-galaxy', '--help']: sys.argv.insert(1, 'info')"]
-      #end
       c.vm.provision :ansible_local do |ansible|
         ansible.provisioning_path = "/opt/vagrant/ansible"
         ansible.playbook = "playbook.yaml"
@@ -60,8 +56,6 @@ Vagrant.configure("2") do |config|
       end
 
       c.vm.synced_folder ".", "/opt/vagrant"
-      #home_dir = Dir.home()
-      #c.vm.synced_folder "#{home_dir}", "/opt/real_home"
     end
   end
 end

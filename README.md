@@ -1,5 +1,5 @@
 # ansible_go_deploy
-Vagrant and Ansible setup to deploy a simple go app - this can be extended quite easily
+Vagrant and Ansible setup to deploy a simple go app
 
 
 ## Instructions:
@@ -13,17 +13,19 @@ vagrant up
 It should then download and install all required vagrant plugins and start bringing up the hosts and provisioning with ansible.
 
 It uses the ansible_local plugin which is currently broken with vagrant <= 1.8.1 and ansible > 2.0.0. So to get around this ansible 1.9.2 is installed
-via a seperate provisioner script.
+via a seperate provisioner script. The bug reports for which are available here:  https://github.com/mitchellh/vagrant/issues/6793
 
 ## Accessing the Site:
 
 Vagrant should have automatically added the hostname to the hosts config file, so accessing:
 
-`http://lb1.ev9.io` should show the load balanced site working. If this does not work, accessing:
+http://lb1.ev9.io
+
+should show the load balanced site working. If this does not work, accessing:
 
 http://192.168.100.10
 
-should bring show the site. the nodes are also port forwarded to localhost.
+should show the site. the nodes are also port forwarded to localhost.
 
 Accessing http://localhost:8080 should be a connection directly to the loadbalancer.
 
@@ -32,7 +34,7 @@ or their equivalent ips, which can be found in the hosts.yaml config file.
 
 ## How it works:
 
-Vagrant reads in the Hosts.yaml file, this has all of the varous hosts defined, it then builds the boxes as defined within this config and generates an environment file based on the hosts name information.
+Vagrant reads in the Hosts.yaml file, this has all of the various hosts defined, it then builds the boxes as defined within this config and generates an environment file based on the hosts name information.
 
 Ansible is called from playbook.yaml, with a limit of the specific host being run from vagrant the exact command run is as follows:
 
@@ -138,5 +140,20 @@ Currently, it matches up to app10, if more apps are required the following secti
         }
 ```
 
+## Automated Upgrades / Build / Delivery of the code
+
+Due to the way this is done and the very useful vagrant provision command, changing the web app code in:
+
+```
+ansible/app/files/webapp.go
+```
+
+and then running:
+
+```
+cat hosts.yaml |grep app|grep :name:|awk -F\' '{print "vagrant provision "$2}'\|/bin/bash
+```
+
+Or any variant of this to provision all app nodes, will automatically rebuild / redeploy the code across all of the nodes.
 
 
