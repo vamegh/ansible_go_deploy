@@ -57,7 +57,7 @@ On the vagrant up invocation, if a loadbalancer(lb) instance is being deployed, 
 
 The common role is run on all nodes and does the following:
 
-### ansible common role:
+### Common role:
 * configures resolv.conf
 * installs epel (already installed due to vagrant/ansible bug described above)
 * installs common required packages (wget,curl,vim,deltarpm,yum-utils and lsof)
