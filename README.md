@@ -67,7 +67,7 @@ The lb role is then run which does the following:
 
 ### Loadbalancer (lb) role:
 * installs nginx
-* configures nginx to work in a round-robin fashion (this is a very simple config) -- it reads in the host information from group_vars/all
+* configures nginx to work in round-robin mode (very simple config)
 * starts nginx
 * opens firewall port 80
 
