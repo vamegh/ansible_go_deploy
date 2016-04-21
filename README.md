@@ -13,7 +13,9 @@ vagrant up
 It should then download and install all required vagrant plugins and start bringing up the hosts and provisioning with ansible.
 
 It uses the ansible_local plugin which is currently broken with vagrant <= 1.8.1 and ansible > 2.0.0. So to get around this ansible 1.9.2 is installed
-via a seperate provisioner script. The bug reports for which are available here:  https://github.com/mitchellh/vagrant/issues/6793
+via a seperate provisioner script. The bug report for it is available here:  https://github.com/mitchellh/vagrant/issues/6793
+
+A typical run output is included in [vagrant_up.log](https://github.com/vamegh/ansible_go_deploy/blob/master/vagrant_up.log)
 
 ## Accessing the Site:
 
