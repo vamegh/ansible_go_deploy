@@ -36,8 +36,11 @@ or their equivalent ips, which can be found in the hosts.yaml config file.
 
 ### Screenshots:
 
-![screenshot_1](https://raw.githubusercontent.com/vamegh/ansible_go_deploy/master/screenshots/screenshot1.jpg =500x500)
-![screenshot_2](https://raw.githubusercontent.com/vamegh/ansible_go_deploy/master/screenshots/screenshot2.jpg =500x500)
+![screenshot_1](https://raw.githubusercontent.com/vamegh/ansible_go_deploy/master/screenshots/screenshot1.jpg)
+![screenshot_2](https://raw.githubusercontent.com/vamegh/ansible_go_deploy/master/screenshots/screenshot2.jpg)
+
+<img src="https://raw.githubusercontent.com/vamegh/ansible_go_deploy/master/screenshots/screenshot1.jpg" align=centre width="500" height="500" />
+<img src="https://raw.githubusercontent.com/vamegh/ansible_go_deploy/master/screenshots/screenshot2.jpg" align=centre width="500" height="500" />
 
 ## How it works:
 
