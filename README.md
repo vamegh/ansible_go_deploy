@@ -34,6 +34,11 @@ Accessing http://localhost:8080 should be a connection directly to the loadbalan
 Direct connections to the nodes are also made availabled via localhost ports 8001 / 8002 or via http://app1.ev9.io:8484  / http://app2.ev9.io:8484
 or their equivalent ips, which can be found in the hosts.yaml config file.
 
+### Screenshots:
+
+![screenshot_1](https://raw.githubusercontent.com/vamegh/ansible_go_deploy/master/screenshots/screenshot1.jpg =500x500)
+![screenshot_2](https://raw.githubusercontent.com/vamegh/ansible_go_deploy/master/screenshots/screenshot2.jpg =500x500)
+
 ## How it works:
 
 Vagrant reads in the Hosts.yaml file, this has all of the various hosts defined, it then builds the boxes as defined within this config and generates an environment file based on the hosts name information.
