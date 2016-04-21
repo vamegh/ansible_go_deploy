@@ -65,7 +65,7 @@ The common role is run on all nodes and does the following:
 
 The lb role is then run which does the following:
 
-## Loadbalancer (lb) role:
+### Loadbalancer (lb) role:
 * installs nginx
 * configures nginx to work in a round-robin fashion (this is a very simple config) -- it reads in the host information from group_vars/all
 * starts nginx
@@ -78,6 +78,7 @@ The common role is run on all nodes and does the same thing.
 
 The app role does the following:
 
+### App role:
 * installs golang
 * creates /opt/app directory
 * copies the app code  to /opt/app
