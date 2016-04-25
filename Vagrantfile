@@ -10,7 +10,7 @@ require 'resolv'
                       'vagrant-hostsupdater']
 require_relative "vagrant_requires.rb"
 
-centos7_box_url   = 'https://atlas.hashicorp.com/puppetlabs/boxes/centos-7.1-64-nocm'
+centos7_box_url   = 'https://atlas.hashicorp.com/puppetlabs/boxes/centos-7.0-64-nocm'
 
 hosts = []
 if File.exist?("hosts.yaml")
