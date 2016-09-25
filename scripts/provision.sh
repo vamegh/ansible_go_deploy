@@ -9,9 +9,10 @@
 pkg_install() {
   echo 'Installing package dependencies'
   if [ ! -f /etc/yum.repos.d/epel.repo ]; then
-    rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-6.noarch.rpm
+    rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
   fi
-  yum -y install python-pip python-devel && sudo pip install ansible==1.9.2
+  yum -y install python-pip python-devel
+  yum -y install ansible
   yum clean all
   yum makecache
 }

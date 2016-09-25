@@ -3,40 +3,40 @@
 # file: roles/app/tasks/main.yaml
 
 - name: install golang
-  sudo: true
+  become: true
   yum: name=golang state=installed
   tags:
     - golang
 
 - name: create app dir
-  sudo: true
+  become: true
   file: state=directory owner='root' group='root' mode='0755' path='/opt/app' recurse=yes
 
 - name: copy app code
-  sudo: true
+  become: true
   ##assemble: src=app_fragments dest=/opt/app/app.go mode=0755
   copy: src=app.go dest=/opt/app/app.go mode=0750
 
 - name: compile the code
-  sudo: true
+  become: true
   command: go build /opt/app/app.go chdir=/opt/app
 
 - name: create systemd file
-  sudo: true
+  become: true
   copy: src=app.service dest=/usr/lib/systemd/system/app.service mode=0755
   register: app_systemd
 
 - name: reload systemd
-  sudo: true
+  become: true
   command: systemctl daemon-reload
   when: app_systemd.changed == True
 
 - name: start app
-  sudo: true
+  become: true
   service: name=app state=started enabled=yes
 
 - name: open firewall port 8484
-  sudo: true
+  become: true
   command: "{{item}}"
   with_items:
     - firewall-cmd --permanent --zone=public --add-port=8484/tcp

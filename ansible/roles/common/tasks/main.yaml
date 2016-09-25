@@ -3,16 +3,16 @@
 # file: roles/common/tasks/main.yaml
 
 - name: configure resolv.conf
-  sudo: true
+  become: true
   template: src=resolv_conf.j2 dest=/etc/resolv.conf
-  with_dict: zones[zone]
+  with_dict: "{{ zones[zone] }}"
 
 - name: add epel repo
-  sudo: true
+  become: true
   yum: name={{epel_repo}} state=present
 
 - name: install required base packages
-  sudo: true
+  become: true
   yum: name={{item}} state=installed
   with_items:
     - wget
@@ -22,8 +22,9 @@
     - deltarpm
     - lsof
 
+
 ## To speed up processing disabled this.
 #- name: update all packages
-#  sudo: true
+#  become: true
 #  yum: update_cache=yes name=* state=latest
 
